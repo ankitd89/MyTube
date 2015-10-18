@@ -1,6 +1,11 @@
 package com.adevani.model;
 
+
 import com.google.api.client.util.DateTime;
+
+import java.math.BigInteger;
+
+;
 
 /**
  * Created by ankitdevani on 10/17/15.
@@ -9,17 +14,17 @@ public class Video {
 
     private String id;
     private String title;
-    //private long viewCount;
+    private BigInteger viewCount;
     private DateTime publishedDate;
     private String thumbnailURL;
 
-   /* public long getViewCount() {
+    public BigInteger getViewCount() {
         return viewCount;
     }
 
-    public void setViewCount(long viewCount) {
+    public void setViewCount(BigInteger viewCount) {
         this.viewCount = viewCount;
-    }*/
+    }
 
     public DateTime getPublishedDate() {
         return publishedDate;

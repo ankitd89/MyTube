@@ -13,6 +13,8 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchListResponse;
 import com.google.api.services.youtube.model.SearchResult;
+import com.google.api.services.youtube.model.VideoListResponse;
+import com.google.common.base.Joiner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,24 +50,44 @@ public class YoutubeConnector {
 
     public List<Video> search(String keywords){
         query.setQ(keywords);
+        List<String> videoIds = new ArrayList<>();
+        List<Video> items = new ArrayList<Video>();
         try{
             SearchListResponse response = query.execute();
             List<SearchResult> results = response.getItems();
 
-            List<Video> items = new ArrayList<Video>();
-            for(SearchResult result:results){
-                Video item = new Video();
-                item.setTitle(result.getSnippet().getTitle());
-                item.setPublishedDate(result.getSnippet().getPublishedAt());
-                //item.setViewCount(result.getSt);
-                item.setThumbnailURL(result.getSnippet().getThumbnails().getDefault().getUrl());
-                item.setId(result.getId().getVideoId());
-                items.add(item);
+            if (results != null) {
+                for (SearchResult searchResult : results) {
+                    videoIds.add(searchResult.getId().getVideoId());
+                }
+                Joiner stringJoiner = Joiner.on(',');
+                String videoId = stringJoiner.join(videoIds);
+
+                YouTube.Videos.List listVideosRequest = youtube.videos().list("snippet, statistics," +
+                        " recordingDetails").setId(videoId);
+                listVideosRequest.setOauthToken(MainActivity.FETCH_TOKEN);
+                VideoListResponse listResponse = listVideosRequest.execute();
+                List<com.google.api.services.youtube.model.Video> videoList = listResponse.getItems();
+                if (videoList != null) {
+                    for (int i=0; i< videoList.size(); i++) {
+                        com.google.api.services.youtube.model.Video retrievedVideo = videoList.get(i);
+                        Video item = new Video();
+                        item.setTitle(retrievedVideo.getSnippet().getTitle());
+                        item.setPublishedDate(retrievedVideo.getSnippet().getPublishedAt());
+                        item.setViewCount(retrievedVideo.getStatistics().getViewCount());
+                        item.setThumbnailURL(retrievedVideo.getSnippet().getThumbnails().getDefault().getUrl());
+                        item.setId(retrievedVideo.getId());
+                        items.add(item);
+                    }
+                }
+
+
             }
-            return items;
+
         }catch(IOException e){
             Log.d(TAG, "Could not search: "+e);
-            return null;
+
         }
+        return items;
     }
 }

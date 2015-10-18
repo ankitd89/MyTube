@@ -32,12 +32,11 @@
         android:textSize="@dimen/video_row_description_text_size"
         />
 
-    <!--<TextView android:id="@+id/video_viewCount"
+    <TextView android:id="@+id/video_viewCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/video_publishedDate"
-        android:layout_below="@+id/video_title"
         android:textSize="@dimen/video_row_description_text_size"
-        />-->
+        android:layout_below="@+id/video_publishedDate"
+        android:layout_toEndOf="@+id/video_image" />
 
 </RelativeLayout>

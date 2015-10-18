@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -23,6 +22,7 @@ import com.adevani.helper.YoutubeConnector;
 import com.adevani.model.Video;
 import com.squareup.picasso.Picasso;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -97,7 +97,6 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void updateVideosFound() {
-        Log.d(TAG, searchResults.isEmpty() + "");
         ArrayAdapter<Video> adapter = new ArrayAdapter<Video>(getApplicationContext(),
                 R.layout.row_video, searchResults){
             @Override
@@ -108,14 +107,16 @@ public class SearchActivity extends AppCompatActivity {
                 ImageView thumbnail = (ImageView)convertView.findViewById(R.id.video_image);
                 TextView title = (TextView)convertView.findViewById(R.id.video_title);
                 TextView publishedDate = (TextView)convertView.findViewById(R.id.video_publishedDate);
-                //TextView viewCount = (TextView)convertView.findViewById(R.id.video_viewCount);
+                TextView viewCount = (TextView)convertView.findViewById(R.id.video_viewCount);
 
                 Video searchResult = searchResults.get(position);
 
                 Picasso.with(getApplicationContext()).load(searchResult.getThumbnailURL()).into(thumbnail);
                 title.setText(searchResult.getTitle());
-                publishedDate.setText(searchResult.getPublishedDate().toString());
-                //viewCount.setText((int) searchResult.getViewCount());
+                Long dt = searchResult.getPublishedDate().getValue();
+                Date date = new Date(dt);
+                publishedDate.setText(date.toString());
+                viewCount.setText(searchResult.getViewCount().toString());
                 return convertView;
             }
         };
