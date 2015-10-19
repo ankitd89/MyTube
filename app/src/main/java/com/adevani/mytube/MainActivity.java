@@ -127,9 +127,10 @@ public class MainActivity extends AppCompatActivity implements
             if (currentPerson != null) {
                 // Show signed-in user's name
                 String name = currentPerson.getDisplayName();
-                mStatus.setText(getString(R.string.signed_in_fmt, name));
+                //mStatus.setText(getString(R.string.signed_in_fmt, name));
 
                 // Show users' email address (which requires GET_ACCOUNTS permission)
+                //Get the FetchToken
                 if (checkAccountsPermission()) {
                     String currentAccount = Plus.AccountApi.getAccountName(mGoogleApiClient);
                     ((TextView) findViewById(R.id.email)).setText(currentAccount);
@@ -140,17 +141,17 @@ public class MainActivity extends AppCompatActivity implements
                 // If getCurrentPerson returns null there is generally some error with the
                 // configuration of the application (invalid Client ID, Plus API not enabled, etc).
                 Log.w(TAG, getString(R.string.error_null_person));
-                mStatus.setText(getString(R.string.signed_in_err));
+                //mStatus.setText(getString(R.string.signed_in_err));
             }
 
             // Set button visibility
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
-            Intent myIntent = new Intent(MainActivity.this, SearchActivity.class);
+            Intent myIntent = new Intent(MainActivity.this, HomeActivity.class);
             MainActivity.this.startActivity(myIntent);
         } else {
             // Show signed-out message and clear email field
-            mStatus.setText(R.string.signed_out);
+            //mStatus.setText(R.string.signed_out);
             ((TextView) findViewById(R.id.email)).setText("");
 
             // Set button visibility
@@ -360,7 +361,7 @@ public class MainActivity extends AppCompatActivity implements
         mGoogleApiClient.connect();
 
         // Show a message to the user that we are signing in.
-        mStatus.setText(R.string.signing_in);
+        mStatus.setText("");
     }
     // [END on_sign_in_clicked]
 

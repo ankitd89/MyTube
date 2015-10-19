@@ -50,4 +50,9 @@ public class FetchToken extends AsyncTask {
         return token;
     }
 
+    @Override
+    protected void onPostExecute(Object o) {
+        super.onPostExecute(o);
+        PlaylistRequests.listAllPlaylist(context);
+    }
 }

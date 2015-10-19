@@ -31,7 +31,9 @@ public class PlayerActivity extends YouTubeBaseActivity implements YouTubePlayer
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if(!b){
-            youTubePlayer.cueVideo(getIntent().getStringExtra("VIDEO_ID"));
+            youTubePlayer.setFullscreen(true);
+
+            youTubePlayer.loadVideo(getIntent().getStringExtra("VIDEO_ID"));
         }
     }
 

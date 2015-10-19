@@ -35,8 +35,7 @@ public class YoutubeConnector {
         youtube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), new HttpRequestInitializer() {
             @Override
             public void initialize(HttpRequest hr) throws IOException {}
-        })
-                .setApplicationName(context.getString(R.string.app_name)).build();
+        }).setApplicationName(context.getString(R.string.app_name)).build();
 
         try{
             query = youtube.search().list("id,snippet");

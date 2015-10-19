@@ -29,4 +29,5 @@ dependencies {
     compile 'com.google.android.gms:play-services-identity:8.1.0'
     compile 'com.google.apis:google-api-services-youtube:v3-rev120-1.19.0'
     compile group:'com.squareup.picasso', name:'picasso', version:'2.3.2'
+    compile 'com.mcxiaoke.volley:library:1.0.18'
 }

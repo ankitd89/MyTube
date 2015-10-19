@@ -3,7 +3,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_grey_700"
+    android:background="@mipmap/bg"
     android:orientation="vertical"
     android:weightSum="4"
     tools:context=".MainActivity">
@@ -22,7 +22,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="@dimen/g_top_margin"
             android:contentDescription="@string/desc_google_icon"
-            android:src="@mipmap/ic_google" />
+            android:src="@mipmap/app_icon" />
 
         <TextView
             android:id="@+id/title_text"
@@ -38,7 +38,7 @@
             android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/signed_out"
+            android:text=""
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
@@ -52,17 +52,13 @@
     </LinearLayout>
 
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/blue_grey_900">
+
 
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_gravity="center"
             android:visibility="visible"
             tools:visibility="gone" />
 
@@ -97,6 +93,6 @@
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
         </LinearLayout>
 
-    </RelativeLayout>
+
 
 </LinearLayout>

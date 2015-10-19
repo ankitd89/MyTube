@@ -29,5 +29,11 @@
     <string name="search">Search</string>
     <string name="failed_message">Failed to initialize Youtube Player</string>
     <string name="action_settings">Settings</string>
+    <string name="action_Delete">Delete</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>
