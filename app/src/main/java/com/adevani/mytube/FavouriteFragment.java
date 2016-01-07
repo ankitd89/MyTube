@@ -44,6 +44,7 @@ public class FavouriteFragment extends Fragment implements ActionMode.Callback{
     ProgressDialog mDialog;
     ArrayAdapter<PlaylistVideo> adapter;
     protected Object mActionMode;
+    public CheckBox checkBox;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -115,7 +116,7 @@ public class FavouriteFragment extends Fragment implements ActionMode.Callback{
                 TextView title = (TextView) convertView.findViewById(R.id.title);
                 TextView publishedDate = (TextView) convertView.findViewById(R.id.published_date);
                 TextView viewCount = (TextView) convertView.findViewById(R.id.views);
-                CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
+                checkBox = (CheckBox) convertView.findViewById(R.id.checkBox);
 
                 //checkBox.setChecked(false);   // Initialize
                 checkBox.setTag(position);
@@ -132,7 +133,6 @@ public class FavouriteFragment extends Fragment implements ActionMode.Callback{
                         }
                         else {
                             if (mActionMode != null) {  // Only operate when mActionMode is available
-                                //mActionMode.finish();
                                 playListVideoIdToBeDeletedList.remove(favouriteResult.getPlaylistItemVideoId());
                                 mActionMode = null;
                             }
@@ -235,6 +235,7 @@ public class FavouriteFragment extends Fragment implements ActionMode.Callback{
 
     @Override
     public void onDestroyActionMode(ActionMode mode) {
+
         Log.i(TAG, "On Destroying Action Mode");
 
     }

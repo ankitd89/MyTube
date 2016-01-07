@@ -42,6 +42,7 @@ public class YoutubeConnector {
             query.setOauthToken(MainActivity.FETCH_TOKEN);
             query.setType("video");
             query.setFields("items(id/videoId,snippet/title,snippet/publishedAt,snippet/thumbnails/default/url)");
+            query.setMaxResults((long) 30);
         }catch(IOException e){
             Log.d(TAG, "Could not initialize: " + e);
         }
