@@ -32,5 +32,25 @@ How to use the application:
 # Screenshots
 
 ####Screen 1
+![Screen 1](https://github.com/ankitd89/MyTube/blob/master/Screenshots/Picture1.png?raw=true "Screen 1")
 
 ####Screen 2
+![Screen 2](https://github.com/ankitd89/MyTube/blob/master/Screenshots/Picture2.png?raw=true "Screen 2")
+
+####Screen 3
+![Screen 3](https://github.com/ankitd89/MyTube/blob/master/Screenshots/Picture3.png?raw=true "Screen 3")
+
+####Screen 4
+![Screen 4](https://github.com/ankitd89/MyTube/blob/master/Screenshots/Picture4.png?raw=true "Screen 4")
+
+####Screen 5
+![Screen 5](https://github.com/ankitd89/MyTube/blob/master/Screenshots/Picture5.png?raw=true "Screen 5")
+
+####Screen 6
+![Screen 6](https://github.com/ankitd89/MyTube/blob/master/Screenshots/Picture6.png?raw=true "Screen 6")
+
+####Screen 7
+![Screen 7](https://github.com/ankitd89/MyTube/blob/master/Screenshots/Picture7.png?raw=true "Screen 7")
+
+####Screen 8
+![Screen 8](https://github.com/ankitd89/MyTube/blob/master/Screenshots/Picture8.png?raw=true "Screen 8")
